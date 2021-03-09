@@ -33,6 +33,14 @@ void zad2(std::vector<double>& values)
 
 }
 
+uint64_t factorial(uint64_t A)
+{
+    if (A <= 1) {
+        return 1;
+    }
+    return A * factorial(A - 1);
+}
+    
 
 int main()
 {
@@ -41,5 +49,7 @@ int main()
     std::cout<<std::endl;
     std::vector<double> values = { -1.0, 100, 3.14, -999.9, 21.37 };
     zad2(values);
+    uint64_t result = factorial(15);
+    std::cout << result << std::endl;
 }
 
