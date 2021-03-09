@@ -54,7 +54,22 @@ void zadanie3(uint64_t B)
         return A * factorial_r(A - 1);
     }
 
-    void zadanie5();
+    int zadanie5(int prime) {
+        void is_prime();
+        {
+            if (prime <= 1)
+            {
+                return false;
+            }
+            for (int i = 2; i < prime; i++)
+            {
+                if (prime % i == 0)
+                    return false;
+            }
+            return true;
+        }
+    }
+       
 int main()
 {
     std::vector<int>vec(6);
@@ -65,6 +80,12 @@ int main()
     zadanie3(15);
     uint64_t result = factorial_r(15);
     std::cout << result << std::endl;
+    int prime_or_not_prime = 13;
+    if (zadanie5(prime_or_not_prime)) {
+        std::cout << prime_or_not_prime << " is prime!" << std::endl;
+    }else
+        std::cout << prime_or_not_prime << " is not prime!" << std::endl;
+
     
 }
 
