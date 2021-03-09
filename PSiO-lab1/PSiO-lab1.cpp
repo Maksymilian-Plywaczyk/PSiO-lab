@@ -4,7 +4,7 @@
 int main()
 {
     std::cout << "Hello World!\n";
-    std::cout << "first commit" << std::endl;
+    std::cout << "first commit";
 
 }
 
