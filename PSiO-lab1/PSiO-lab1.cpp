@@ -32,15 +32,28 @@ void zad2(std::vector<double>& values)
    
 
 }
-
-uint64_t factorial(uint64_t A)
+void zadanie3(uint64_t B)
 {
-    if (A <= 1) {
-        return 1;
+    uint64_t fact, i;
+    fact = 1;
+    i = 1;
+    while (i <= B)
+    {
+        fact = fact * i;
+        i++;
+        
     }
-    return A * factorial(A - 1);
+    std::cout << fact << std::endl;
 }
-    
+
+    uint64_t factorial_r(uint64_t A)
+    {
+        if (A <= 1) {
+            return 1;
+        }
+        return A * factorial_r(A - 1);
+    }
+
 
 int main()
 {
@@ -49,7 +62,9 @@ int main()
     std::cout<<std::endl;
     std::vector<double> values = { -1.0, 100, 3.14, -999.9, 21.37 };
     zad2(values);
-    uint64_t result = factorial(15);
+    zadanie3(15);
+    uint64_t result = factorial_r(15);
     std::cout << result << std::endl;
+    
 }
 
