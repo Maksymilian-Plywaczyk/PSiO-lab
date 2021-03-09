@@ -54,7 +54,7 @@ void zadanie3(uint64_t B)
         return A * factorial_r(A - 1);
     }
 
-
+    void zadanie5();
 int main()
 {
     std::vector<int>vec(6);
