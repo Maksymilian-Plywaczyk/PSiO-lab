@@ -4,7 +4,7 @@
 
 
 
-void zad1(std::vector<int>& vec)
+void exercise1(std::vector<int>& vec)
 {
     void fill_progressive();
     {
@@ -21,7 +21,7 @@ void zad1(std::vector<int>& vec)
        }
     }
 }
-void zad2(std::vector<double>& values) 
+void exercise2(std::vector<double>& values) 
 {
     //std::vector<double> values = { -1.0, 100, 3.14, -999.9, 21.37 };
    
@@ -32,7 +32,7 @@ void zad2(std::vector<double>& values)
    
 
 }
-void zadanie3(uint64_t B)
+void exercise3(uint64_t B)
 {
     uint64_t fact, i;
     fact = 1;
@@ -54,7 +54,7 @@ void zadanie3(uint64_t B)
         return A * factorial_r(A - 1);
     }
 
-    int zadanie5(int prime) {
+    int exercise5(int prime) {
         void is_prime();
         {
             if (prime <= 1)
@@ -73,15 +73,15 @@ void zadanie3(uint64_t B)
 int main()
 {
     std::vector<int>vec(6);
-    zad1(vec);
+    exercise1(vec);
     std::cout<<std::endl;
     std::vector<double> values = { -1.0, 100, 3.14, -999.9, 21.37 };
-    zad2(values);
-    zadanie3(15);
+    exercise2(values);
+    exercise3(15);
     uint64_t result = factorial_r(15);
     std::cout << result << std::endl;
     int prime_or_not_prime = 13;
-    if (zadanie5(prime_or_not_prime)) {
+    if (exercise5(prime_or_not_prime)) {
         std::cout << prime_or_not_prime << " is prime!" << std::endl;
     }else
         std::cout << prime_or_not_prime << " is not prime!" << std::endl;
