@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
+#define M_PI 3.14159265358979323846
 
 
 
@@ -69,6 +71,26 @@ void exercise3(uint64_t B)
             return true;
         }
     }
+    double leibniz_pi(double &stop_at)
+    {
+        double pi = 1.0;
+        if(pi>=stop_at)
+        for (int i = 0; i < 2000; i++)
+        {
+            double den = i * 2 + 3;
+            if (i % 2 == 0)
+            {
+                pi -= (1 / den);
+            }
+            else {
+                pi += (1 / den);
+            }
+        }
+        double new_pi = pi * 4;
+        
+        return new_pi;
+    }
+
        
 int main()
 {
@@ -86,6 +108,10 @@ int main()
     }else
         std::cout << prime_or_not_prime << " is not prime!" << std::endl;
 
+    double stop_at = 0.001;
     
+    double pi_approx = leibniz_pi(stop_at);
+    std::cout << pi_approx << std::endl;
+    std::cout << "error: " << pi_approx - M_PI << std::endl;
 }
 
