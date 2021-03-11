@@ -2,11 +2,12 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <string>
 #define M_PI 3.14159265358979323846
 
 
 
-void exercise1(std::vector<int>& vec)
+void exercise1(std::vector<int>& vec)//wypelnianie i wyswietlanie wektora
 {
     void fill_progressive();
     {
@@ -23,7 +24,7 @@ void exercise1(std::vector<int>& vec)
        }
     }
 }
-void exercise2(std::vector<double>& values) 
+void exercise2(std::vector<double>& values)//funkcja min_max 
 {
     //std::vector<double> values = { -1.0, 100, 3.14, -999.9, 21.37 };
    
@@ -34,7 +35,7 @@ void exercise2(std::vector<double>& values)
    
 
 }
-void exercise3(uint64_t B)
+void exercise3(uint64_t B)// silnia bez rekurencji
 {
     uint64_t fact, i;
     fact = 1;
@@ -48,7 +49,7 @@ void exercise3(uint64_t B)
     std::cout << fact << std::endl;
 }
 
-    uint64_t factorial_r(uint64_t A)
+    uint64_t factorial_r(uint64_t A)//zadanie 4 silnia z uzyciem rekurencji
     {
         if (A <= 1) {
             return 1;
@@ -56,7 +57,8 @@ void exercise3(uint64_t B)
         return A * factorial_r(A - 1);
     }
 
-    int exercise5(int prime) {
+    int exercise5(int prime)//liczby pierwsze 
+    {
         void is_prime();
         {
             if (prime <= 1)
@@ -71,13 +73,13 @@ void exercise3(uint64_t B)
             return true;
         }
     }
-    double leibniz_pi(double &stop_at)
+    double leibniz_pi(double &stop_at)//wzor Leibniza
     {
         double pi = 1.0;
         if(pi>=stop_at)
         for (int i = 0; i < 2000; i++)
         {
-            double den = i * 2 + 3;
+            double den = (i * 2) + 3;
             if (i % 2 == 0)
             {
                 pi -= (1 / den);
@@ -90,7 +92,31 @@ void exercise3(uint64_t B)
         
         return new_pi;
     }
+    void draw_square(int number, bool left_diagonal, bool right_diagonal)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            for (int y = 0; y < number; y++)
 
+                if (i == 0 || i == number - 1 || y == 0 || y == number - 1 ||( i == y)||(y==(number-i)-1))
+                {
+
+                    std::cout << "#";
+                    left_diagonal = true;
+                    right_diagonal = true;
+                }
+                else {
+                    std::cout <<" ";
+                    left_diagonal = false;
+                    right_diagonal = false;
+                }
+                   
+            std::cout << std::endl;
+            }
+       
+        }
+
+    
        
 int main()
 {
@@ -113,5 +139,7 @@ int main()
     double pi_approx = leibniz_pi(stop_at);
     std::cout << pi_approx << std::endl;
     std::cout << "error: " << pi_approx - M_PI << std::endl;
+
+    draw_square(7,true,false);
 }
 
