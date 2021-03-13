@@ -116,8 +116,15 @@ void exercise3(uint64_t B)// silnia bez rekurencji
             }
        
         }
-
-    
+    int gcd(int a, int b)
+    {
+        if (a == 0)
+                   return b;
+        
+        return gcd(b % a, a);
+        
+      
+    }
        
 int main()
 {
@@ -142,5 +149,8 @@ int main()
     std::cout << "error: " << pi_approx - M_PI << std::endl;
 
     draw_square(7, true, true);
+    int a = 150;
+    int b = 30;
+    std::cout << gcd(a, b);
 }
 
