@@ -94,7 +94,7 @@ void exercise3(uint64_t B)// silnia bez rekurencji
     }
     void draw_square(int number, bool left_diagonal, bool right_diagonal)
     {
-        if(left_diagonal== true||right_diagonal==true)
+        if(left_diagonal== true&&right_diagonal==true)
         for (int i = 0; i < number; i++)
         {
             for (int y = 0; y < number; y++)
@@ -141,6 +141,6 @@ int main()
     std::cout << pi_approx << std::endl;
     std::cout << "error: " << pi_approx - M_PI << std::endl;
 
-    draw_square(7,true,true);
+    draw_square(7, true, true);
 }
 
