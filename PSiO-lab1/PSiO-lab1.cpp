@@ -131,24 +131,27 @@ int main()
     std::vector<int>vec(6);
     exercise1(vec);
     std::cout<<std::endl;
+
     std::vector<double> values = { -1.0, 100, 3.14, -999.9, 21.37 };
     exercise2(values);
+    
     exercise3(15);
     uint64_t result = factorial_r(15);
     std::cout << result << std::endl;
+    
     int prime_or_not_prime = 13;
     if (exercise5(prime_or_not_prime)) {
         std::cout << prime_or_not_prime << " is prime!" << std::endl;
     }else
         std::cout << prime_or_not_prime << " is not prime!" << std::endl;
 
-    double stop_at = 0.001;
-    
+    double stop_at = 0.001;  
     double pi_approx = leibniz_pi(stop_at);
     std::cout << pi_approx << std::endl;
     std::cout << "error: " << pi_approx - M_PI << std::endl;
 
     draw_square(7, true, true);
+    
     int a = 150;
     int b = 30;
     std::cout << gcd(a, b);
