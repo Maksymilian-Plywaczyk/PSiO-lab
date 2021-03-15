@@ -31,7 +31,7 @@ void exercise2(std::vector<double>& values)//funkcja min_max
    const auto [min,max]= std::minmax_element(values.begin(), values.end());
    std::cout <<"max element: " << *max << std::endl;
    std::cout << "min element: " << *min << std::endl;
-
+   
    
 
 }
