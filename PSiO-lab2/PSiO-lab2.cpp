@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
 
 
 
@@ -14,6 +15,18 @@ bool is_palindrome(std::string& word)
     }
     return true;
 }
+void find_all(std::string& sentence, char letter)
+{
+    size_t position = sentence.find(letter);
+    do{
+
+        std::cout << "Litera 'a' wystepuje na miejscu: " << position << std::endl;
+        position = sentence.find(letter, position + 1);
+
+    }while (position != std::string::npos);
+   
+    
+}
 int main()
 {
     std::string word = "racecar";
@@ -23,7 +36,8 @@ int main()
     else {
         std::cout << "Nope" << std::endl;
     }
-
+    std::string input = "Ala ma kota";
+    find_all(input, 'a');
 
     
 }
