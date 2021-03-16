@@ -24,7 +24,22 @@ void find_all(std::string& sentence, char letter)
         position = sentence.find(letter, position + 1);
 
     }while (position != std::string::npos);
-   
+       
+}
+
+std::string find_longest_word(std::string& expression)
+{
+    std::string word, longest_word;
+    do {
+        word = expression.substr(0, expression.find(' '));
+
+        if (word.size() > longest_word.size())
+            longest_word = word;
+
+        expression.erase(0, word.size() + 1);
+    } while (word != "");
+    std::cout << "Najdluzszym slowem w zdaniu jest: " << longest_word;
+    return longest_word;
     
 }
 int main()
@@ -36,9 +51,12 @@ int main()
     else {
         std::cout << "Nope" << std::endl;
     }
+   
     std::string input = "Ala ma kota";
     find_all(input, 'a');
 
-    
+    std::string  expression= "Ala ma kota kot jezdzi na Roombie";
+
+    std::string longest = find_longest_word(expression); // "Roombie"
 }
 
