@@ -44,6 +44,8 @@ std::string find_longest_word(std::string& expression)
 }
 std::vector<std::string> split(std::string& sentence)
 {
+    int b = 8;
+    b++;
     std::vector<std::string>v;
     size_t last_position = 0;
     size_t current_position = sentence.find(' ');
@@ -58,7 +60,19 @@ std::vector<std::string> split(std::string& sentence)
     return v;
 }
 
-
+std::string find_and_replace(std::string& input, std::string search, std::string replace)
+{
+   auto searching = input.find(search);
+   auto length = search.size();
+    do
+    {
+        input.replace(searching, length, replace);
+        searching = input.find(search);
+    } while (searching != std::string::npos);
+    
+    
+    return input;
+}
 int main()
 {
     std::string word = "racecar";
@@ -72,13 +86,18 @@ int main()
     std::string input = "Ala ma kota";
     find_all(input, 'a');
 
-    std::string  expression= "Ala ma kota kot jezdzi na Roombie";
+    std::string  expression= "Ala ma kota, kot jezdzi na Roombie";
 
     std::string longest = find_longest_word(expression); // "Roombie"
 
     std::string sentence = "Ala ma kota";
     std::vector<std::string> words = split(sentence);
     for (auto it = words.begin(); it != words.end(); it++)
-        std::cout << *it << ",";
+        std::cout << *it << "," <<
+        std::endl;
+    std::string input2 = "Ala ma kota, kot zjadl Ale!";
+    std::string output = find_and_replace(input2, "kot", "hefalump");
+    std::cout << output;
+
 }
 
