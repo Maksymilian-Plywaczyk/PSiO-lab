@@ -38,10 +38,27 @@ std::string find_longest_word(std::string& expression)
 
         expression.erase(0, word.size() + 1);
     } while (word != "");
-    std::cout << "Najdluzszym slowem w zdaniu jest: " << longest_word;
+    std::cout << "Najdluzszym slowem w zdaniu jest: " << longest_word << std::endl;
     return longest_word;
     
 }
+std::vector<std::string> split(std::string& sentence)
+{
+    std::vector<std::string>v;
+    size_t last_position = 0;
+    size_t current_position = sentence.find(' ');
+    do
+    {
+        v.emplace_back(sentence.substr(last_position, current_position-last_position));
+        last_position = current_position + 1;
+        current_position = sentence.find(' ', last_position);
+
+    } while (current_position != std::string::npos);
+    v.emplace_back(sentence.substr(last_position, current_position));
+    return v;
+}
+
+
 int main()
 {
     std::string word = "racecar";
@@ -58,5 +75,10 @@ int main()
     std::string  expression= "Ala ma kota kot jezdzi na Roombie";
 
     std::string longest = find_longest_word(expression); // "Roombie"
+
+    std::string sentence = "Ala ma kota";
+    std::vector<std::string> words = split(sentence);
+    for (auto it = words.begin(); it != words.end(); it++)
+        std::cout << *it << ",";
 }
 
