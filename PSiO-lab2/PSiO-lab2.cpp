@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include<algorithm>
+#include<fstream>
+#include<sstream>
 
 
 bool is_palindrome(std::string& word)
@@ -111,6 +113,46 @@ int binary_search(const std::vector<int>& tab, int szukana_wartosc)
         }    } while (start <= end);
     return std::string::npos;
 }
+struct Exchange_rate
+{
+    std::string date;
+    double usd;
+    double eur;
+    std::string table_id;
+
+};
+
+std::vector<Exchange_rate>load_data(const std::string& filename)
+{
+    std::fstream file(filename, std::fstream::in);
+    std::vector<Exchange_rate> rates;
+    if (not file.is_open()) {
+        std::cout << "ERRRORRRR" << std::endl;
+    }
+        std::string line;
+        std::getline(file, line);
+        while (std::getline(file, line))
+        {
+            std::stringstream str(line);
+            Exchange_rate er;
+            std::getline(str, er.date, ','); //wczytuje date (pierwszy element wiersza)
+            std::string double_str;
+            std::getline(str, double_str, ',');  // wczytuje kurs USD (jako tekst)
+            er.usd = std::stod(double_str);      //zamiana na string->double
+            std::getline(str, double_str, ',');  // wczytuje kurs EUR (jako tekst)
+            er.eur = std::stod(double_str);      //zamiana na string->double
+            std::getline(str, er.table_id, ','); // wczytuje ostatnią kolumnę z numerem tabeli NBP
+            rates.emplace_back(er); //dodaje element do kolekcji
+        }
+        for (const Exchange_rate& r : rates)
+        {
+            std::cout << r.date << std::endl;
+        }
+        return rates;
+   
+    }
+
+
 int main()
 {
     std::string word = "racecar";
@@ -144,9 +186,11 @@ int main()
     }
     std::cout << std::endl;
     std::vector<int>tab = { 1,2,5,8,9,11,15};
-    binary_search(tab, 5);
+    int pozycja=binary_search(tab, 5);
 
-    std::cout <<binary_search << std::endl;
+    std::cout <<pozycja << std::endl;
+    std::vector<Exchange_rate>rates = load_data("kursy_usd_eur.csv");
+
 
 }
 
