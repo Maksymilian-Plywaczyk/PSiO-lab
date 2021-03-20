@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <vector>
-
+#include<algorithm>
 
 
 bool is_palindrome(std::string& word)
@@ -73,6 +73,23 @@ std::string find_and_replace(std::string& input, std::string search, std::string
     
     return input;
 }
+std::vector<int> bubble_sort(std::vector<int>&sort)
+{
+   int rozmiar = sort.size();
+   int i = 0;
+   do{
+       for (i = 0; i < rozmiar - 1;i++)
+       {
+           if (sort[i] > sort[i + 1])
+           {
+               std::swap(sort[i], sort[i + 1]);
+
+           }
+       }
+   } while (rozmiar--);
+   return sort;
+}
+
 int main()
 {
     std::string word = "racecar";
@@ -97,7 +114,13 @@ int main()
         std::endl;
     std::string input2 = "Ala ma kota, kot zjadl Ale!";
     std::string output = find_and_replace(input2, "kot", "hefalump");
-    std::cout << output;
+    std::cout << output << std::endl;
+    std::vector<int>sort = { 1,3,6,7,4,10,15,2 };
+    bubble_sort(sort);
+    for (auto sorting : sort)
+    {
+        std::cout << sorting << std::endl;
+    }
 
 }
 
