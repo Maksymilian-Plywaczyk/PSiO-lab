@@ -90,6 +90,27 @@ std::vector<int> bubble_sort(std::vector<int>&sort)
    return sort;
 }
 
+int binary_search(const std::vector<int>& tab, int szukana_wartosc)
+{
+    int start = 0;
+    int end = tab.size()-1;
+
+
+    do {
+        int mid = (start + end) / 2;
+        if (szukana_wartosc==tab[mid])
+        {
+            return mid;
+        }
+        if (szukana_wartosc> tab[mid])
+        {
+            start = mid + 1;
+        }
+        else
+        {            end = mid - 1;
+        }    } while (start <= end);
+    return std::string::npos;
+}
 int main()
 {
     std::string word = "racecar";
@@ -121,6 +142,11 @@ int main()
     {
         std::cout << sorting << std::endl;
     }
+    std::cout << std::endl;
+    std::vector<int>tab = { 1,2,5,8,9,11,15};
+    binary_search(tab, 5);
+
+    std::cout <<binary_search << std::endl;
 
 }
 
