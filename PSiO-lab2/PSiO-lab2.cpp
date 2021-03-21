@@ -205,6 +205,19 @@ void top_eur(std::vector<Exchange_rate>& rates)
     }
 
 }
+//void binary_search_usd(std::vector<Exchange_rate>&rates,  double szukana_wartosc)
+//{
+//    sort_usd(rates);
+//    for(int i=0; i<rates.size(); i++)
+//        if (std::binary_search(rates.begin(), rates.end(), 3.9011))
+//        {
+//            std::cout <<rates[i].date << std::endl;
+//        }
+//        else
+//            std::cout << " no dice!";
+//    
+// 
+//}
 int main()
 {
     std::string word = "racecar";
@@ -245,6 +258,8 @@ int main()
     top_usd(rates);
    std::cout<< std::endl;
     top_eur(rates);
+    //const double szukana_wartosc = 3.9011;
+    binary_search_usd(rates, 3.9011);
     
 
 }
