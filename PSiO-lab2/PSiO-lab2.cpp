@@ -151,8 +151,50 @@ std::vector<Exchange_rate>load_data(const std::string& filename)
         return rates;
    
     }
+std::vector<Exchange_rate> sort_usd(std::vector<Exchange_rate>& rates)
+{
+    int rozmiar = rates.size();
+    int i = 0;
+    do {
+        for (i = 0; i < rozmiar - 1; i++)
+        {
+            if (rates[i].usd > rates[i + 1].usd)
+            {
+                std::swap(rates[i].usd, rates[i + 1].usd);
 
+            }
+        }
+    } while (rozmiar--);
+    for (const Exchange_rate& w : rates)
+    {
+        std::cout << w.usd << std::endl;
+    }
 
+    return rates;
+  
+}
+std::vector<Exchange_rate> sort_eur(std::vector<Exchange_rate>& rates)
+{
+    int rozmiar = rates.size();
+    int i = 0;
+    do {
+        for (i = 0; i < rozmiar - 1; i++)
+        {
+            if (rates[i].eur > rates[i + 1].eur)
+            {
+                std::swap(rates[i].eur, rates[i + 1].eur);
+
+            }
+        }
+    } while (rozmiar--);
+    for (const Exchange_rate& w : rates)
+    {
+        std::cout << w.eur<< std::endl;
+    }
+
+    return rates;
+
+}
 int main()
 {
     std::string word = "racecar";
@@ -190,7 +232,9 @@ int main()
 
     std::cout <<pozycja << std::endl;
     std::vector<Exchange_rate>rates = load_data("kursy_usd_eur.csv");
-
+    //sort_usd(rates);
+    sort_eur(rates);
+    
 
 }
 
