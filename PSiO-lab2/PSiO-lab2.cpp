@@ -144,10 +144,7 @@ std::vector<Exchange_rate>load_data(const std::string& filename)
             std::getline(str, er.table_id, ','); // wczytuje ostatnią kolumnę z numerem tabeli NBP
             rates.emplace_back(er); //dodaje element do kolekcji
         }
-        for (const Exchange_rate& r : rates)
-        {
-            std::cout << r.date << std::endl;
-        }
+      
         return rates;
    
     }
@@ -165,10 +162,7 @@ std::vector<Exchange_rate> sort_usd(std::vector<Exchange_rate>& rates)
             }
         }
     } while (rozmiar--);
-    for (const Exchange_rate& w : rates)
-    {
-        std::cout << w.usd << std::endl;
-    }
+   
 
     return rates;
   
@@ -187,12 +181,28 @@ std::vector<Exchange_rate> sort_eur(std::vector<Exchange_rate>& rates)
             }
         }
     } while (rozmiar--);
-    for (const Exchange_rate& w : rates)
-    {
-        std::cout << w.eur<< std::endl;
-    }
 
     return rates;
+
+}
+void top_usd(std::vector<Exchange_rate>& rates)
+{
+    sort_usd(rates); 
+    std::cout << "TOP 10 USD" << std::endl;
+    for (int i = rates.size() - 11; i < rates.size(); i++)
+    {
+        std::cout <<"Date: "<< rates[i].date <<" Price: " << rates[i].usd << std::endl;
+    }
+
+}
+void top_eur(std::vector<Exchange_rate>& rates)
+{
+    sort_eur(rates);
+    std::cout << "TOP 10 EURO" << std::endl;
+    for (int i =0; i < 10 ; i++)
+    {
+        std::cout << "Date: " << rates[i].date << " Price: " << rates[i].usd << std::endl;
+    }
 
 }
 int main()
@@ -230,10 +240,11 @@ int main()
     std::vector<int>tab = { 1,2,5,8,9,11,15};
     int pozycja=binary_search(tab, 5);
 
-    std::cout <<pozycja << std::endl;
+    std::cout <<"Position: " <<pozycja << std::endl;
     std::vector<Exchange_rate>rates = load_data("kursy_usd_eur.csv");
-    //sort_usd(rates);
-    sort_eur(rates);
+    top_usd(rates);
+   std::cout<< std::endl;
+    top_eur(rates);
     
 
 }
