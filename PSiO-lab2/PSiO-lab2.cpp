@@ -46,8 +46,7 @@ std::string find_longest_word(std::string& expression)
 }
 std::vector<std::string> split(std::string& sentence)
 {
-    int b = 8;
-    b++;
+  
     std::vector<std::string>v;
     size_t last_position = 0;
     size_t current_position = sentence.find(' ');
@@ -189,7 +188,7 @@ void top_usd(std::vector<Exchange_rate>& rates)
 {
     sort_usd(rates); 
     std::cout << "TOP 10 USD" << std::endl;
-    for (int i = rates.size() - 11; i < rates.size(); i++)
+    for (int i = rates.size() - 10; i < rates.size(); i++)
     {
         std::cout <<"Date: "<< rates[i].date <<" Price: " << rates[i].usd << std::endl;
     }
@@ -205,19 +204,37 @@ void top_eur(std::vector<Exchange_rate>& rates)
     }
 
 }
-//void binary_search_usd(std::vector<Exchange_rate>&rates,  double szukana_wartosc)
-//{
-//    sort_usd(rates);
-//    for(int i=0; i<rates.size(); i++)
-//        if (std::binary_search(rates.begin(), rates.end(), 3.9011))
-//        {
-//            std::cout <<rates[i].date << std::endl;
-//        }
-//        else
-//            std::cout << " no dice!";
-//    
-// 
-//}
+int binary_search_usd(std::vector<Exchange_rate>& rates, double& szukana_wartosc)
+{
+
+    sort_usd(rates);
+    int start = 0;
+    int end = rates.size()-1;
+
+
+    do {
+        int mid = (start + end) / 2;
+        if (rates[szukana_wartosc].usd == rates[mid].usd)
+        {
+                 return mid;
+         
+        }
+        if (rates[szukana_wartosc].usd > rates[mid].usd)
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            end = mid - 1;
+        }
+} while (start <= end);
+
+
+return std::string::npos;
+
+}
+    
+
 int main()
 {
     std::string word = "racecar";
@@ -238,11 +255,13 @@ int main()
     std::string sentence = "Ala ma kota";
     std::vector<std::string> words = split(sentence);
     for (auto it = words.begin(); it != words.end(); it++)
-        std::cout << *it << "," <<
-        std::endl;
+        std::cout << *it << "," << std::endl;
+    
+    
     std::string input2 = "Ala ma kota, kot zjadl Ale!";
     std::string output = find_and_replace(input2, "kot", "hefalump");
     std::cout << output << std::endl;
+    
     std::vector<int>sort = { 1,3,6,7,4,10,15,2 };
     bubble_sort(sort);
     for (auto sorting : sort)
@@ -250,6 +269,7 @@ int main()
         std::cout << sorting << std::endl;
     }
     std::cout << std::endl;
+    
     std::vector<int>tab = { 1,2,5,8,9,11,15};
     int pozycja=binary_search(tab, 5);
 
@@ -258,9 +278,9 @@ int main()
     top_usd(rates);
    std::cout<< std::endl;
     top_eur(rates);
-    //const double szukana_wartosc = 3.9011;
-    binary_search_usd(rates, 3.9011);
-    
-
+   auto szukana_wartosc = 3.9011;
+   binary_search_usd(rates, szukana_wartosc);
+   std::cout << rates[szukana_wartosc].usd;
+ 
 }
 
