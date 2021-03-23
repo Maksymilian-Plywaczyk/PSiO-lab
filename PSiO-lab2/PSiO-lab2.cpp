@@ -204,34 +204,33 @@ void top_eur(std::vector<Exchange_rate>& rates)
     }
 
 }
-int binary_search_usd(std::vector<Exchange_rate>& rates, double& szukana_wartosc)
+bool binary_search_usd(  std::vector<Exchange_rate>& rates, double& szukana_wartosc)
 {
 
     sort_usd(rates);
-    int start = 0;
-    int end = rates.size()-1;
+        auto mid = 0;
+        auto left = 0;
+        auto right = rates.size();
 
 
-    do {
-        int mid = (start + end) / 2;
-        if (rates[szukana_wartosc].usd == rates[mid].usd)
-        {
-                 return mid;
-         
-        }
-        if (rates[szukana_wartosc].usd > rates[mid].usd)
-        {
-            start = mid + 1;
-        }
-        else
-        {
-            end = mid - 1;
-        }
-} while (start <= end);
+   while (left < right) {
+      mid = left + (right - left) / 2;
+      if (szukana_wartosc > rates[mid].usd) {
+          left = mid + 1;
+      }
+      else if (szukana_wartosc <rates[mid].usd) {
+          right = mid;
+      }
+      else {
 
-
-return std::string::npos;
-
+          std::cout << rates[mid].date << std::endl;
+          return true;
+      }
+  }
+   return false;
+   
+  
+ 
 }
     
 
@@ -280,7 +279,6 @@ int main()
     top_eur(rates);
    auto szukana_wartosc = 3.9011;
    binary_search_usd(rates, szukana_wartosc);
-   std::cout << rates[szukana_wartosc].usd;
- 
+   
 }
 
