@@ -56,3 +56,22 @@ void exercise2(const int& range_list, int erase_value_list)
 	
 	
 }
+void exercise3(const int& range, int erase_value_find)
+{
+	std::list<int>numbers;
+	for (int i = 0; i < range; i++)
+	{
+		numbers.push_back(randomInt(-10,10));
+	}
+	auto result = std::find(numbers.begin(), numbers.end(), erase_value_find);
+	while (result != numbers.end())
+	{
+		numbers.erase(result);
+		auto result = std::find(numbers.begin(), numbers.end(), erase_value_find);
+
+	}
+	for (auto it = numbers.begin(); it != numbers.end();)
+	{
+		std::cout << *it << " ";
+	}
+}
