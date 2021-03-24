@@ -32,3 +32,27 @@ void exercise1(const int& range,  int erase_value)
 
 
 }
+void exercise2(const int& range_list, int erase_value_list)
+{
+	std::list<int>numbers;
+	
+	for (int i = 0; i < range_list; i++)
+	{
+		numbers.push_back(randomInt(-20, 20));
+	}
+	for (auto it = numbers.begin(); it != numbers.end(); it++)
+	{
+		if (*it == erase_value_list)
+		{
+			it = numbers.erase(it);
+		}
+		it++;
+	}
+	for (auto it = numbers.begin(); it != numbers.end();it++)
+	{
+		
+		std::cout << *it<<" ";
+	}
+	
+	
+}
