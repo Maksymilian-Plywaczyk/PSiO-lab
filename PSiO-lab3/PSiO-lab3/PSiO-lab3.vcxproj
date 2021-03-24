@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4deeb878-146b-47db-b953-53d31fc73631}</ProjectGuid>
-    <RootNamespace>PSi0lab3</RootNamespace>
+    <ProjectGuid>{dbf0bdcc-3a70-4828-bc0d-f9f082dbff43}</ProjectGuid>
+    <RootNamespace>PSiOlab3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PSi0-lab3.cpp" />
+    <ClCompile Include="PSiO-lab3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
