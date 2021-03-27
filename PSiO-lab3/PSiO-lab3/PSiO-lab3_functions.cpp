@@ -92,3 +92,32 @@ void exercise4(const int& range3)
 	const auto [min, max] = std::minmax_element(numbers.begin(), numbers.end());
 	std::cout <<"Element najmniejszy: "<<*min <<"\nElement najwiekszy: "<<*max << std::endl;
 }
+
+void exercise5(const int& range4)
+{
+	std::vector<int>numbers;
+	for (int i = 0; i < range4; i++)
+	{
+		numbers.push_back(randomInt(-20, 20));
+	}
+	std::sort(numbers.begin(), numbers.end(), [](int a, int b) { return a > b; });
+	for (auto& n : numbers)
+	{
+		std::cout << n << " ";
+	}
+}
+
+void exercise6(const int& range5)
+{
+	std::vector<int>numbers;
+	for (int i = 0; i < range5; i++)
+	{
+		numbers.push_back(randomInt(-20, 20));
+	}
+	for (auto& n : numbers)
+	{
+		int couting = std::count(numbers.begin(), numbers.end(), n);
+		std::cout << "Number: " << n << " cout: " << couting << std::endl;
+	}
+
+}

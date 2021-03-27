@@ -8,5 +8,7 @@ int main()
     //exercise1(20,10);
    //exercise2(10,5);
    //exercise3(10,5);
-    exercise4(10);
+    //exercise4(10);
+    //exercise5(10);
+    exercise6(10);
 }
