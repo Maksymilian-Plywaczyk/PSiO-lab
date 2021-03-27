@@ -76,3 +76,19 @@ void exercise3(const int& range2, int erase_value_find)
 		std::cout << *it << " ";
 	}
 }
+
+void exercise4(const int& range3)
+{
+	std::vector<int>numbers;
+	for (int i = 0; i < range3; i++)
+	{
+		numbers.push_back(randomInt(-20, 20));
+	}
+	for (auto& n : numbers)
+	{
+		std::cout << n << " ";
+	}
+	std::cout << std::endl;
+	const auto [min, max] = std::minmax_element(numbers.begin(), numbers.end());
+	std::cout <<"Element najmniejszy: "<<*min <<"\nElement najwiekszy: "<<*max << std::endl;
+}
