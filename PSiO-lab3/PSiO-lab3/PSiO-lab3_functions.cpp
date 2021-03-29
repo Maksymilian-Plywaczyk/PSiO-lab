@@ -122,9 +122,8 @@ void exercise6(const int& range5)
 
 }
 
-void put_vegetables_and_fruits(int number)
+void put_vegetables_and_fruits(int number,Basket basket)
 {
-	Basket basket;
 	Plant plant;
 	int rodzaj;
 	for (int i = 0; i < number; i++)
@@ -155,18 +154,13 @@ void put_vegetables_and_fruits(int number)
 	}
 }
 
-std::ostream& operator<<(std::ostream& out, const Plant &plant)
-{
-	if (plant.typ == TypePlant::Vegetable)
-	{
-		out << "Warzywo" << std::endl;
-	}
-	else(plant.typ == TypePlant::Fruit);
-	{
-		out << "Owoc" << std::endl;
-	}
-	return out;
-}
+//std::ostream& operator<<(std::ostream& out, const Plant &plant)
+//{
+//	int typ,typ2;
+//	 typ=static_cast<int>(plant.typ == TypePlant::Vegetable);
+//	 typ2= static_cast<int>(plant.typ == TypePlant::Fruit);
+//	 return out << typ << typ2;
+//}
 //std::ostream& operator<<(std::ostream& out, const Basket& basket)
 //{
 //	for (auto& full_basket : basket)
@@ -175,3 +169,30 @@ std::ostream& operator<<(std::ostream& out, const Plant &plant)
 //	}
 //}
 //
+
+bool czy_jest_gruszka(const Basket& basket)
+{
+	auto finding = std::find_if(basket.begin(), basket.end(), [](const Plant plant)
+		{
+			 plant.nazwa == "Gruszka";
+			return true;
+		});
+	if (finding != std::end(basket))
+	{
+		return true;
+	}else{ return false; }
+		
+
+
+
+}
+void sprawdzanie_gruszki( Basket basket)
+{
+	if (czy_jest_gruszka(basket))
+	{
+		std::cout << "Jest gruszka w koszyku!";
+	}
+	else
+		std::cout << "Nie ma gruszki";
+}
+
