@@ -12,4 +12,6 @@ int main()
     //exercise5(10);
     //exercise6(10);
     put_vegetables_and_fruits(3);
+   
+    
 }

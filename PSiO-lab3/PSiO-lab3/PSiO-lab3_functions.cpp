@@ -154,3 +154,24 @@ void put_vegetables_and_fruits(int number)
 
 	}
 }
+
+std::ostream& operator<<(std::ostream& out, const Plant &plant)
+{
+	if (plant.typ == TypePlant::Vegetable)
+	{
+		out << "Warzywo" << std::endl;
+	}
+	else(plant.typ == TypePlant::Fruit);
+	{
+		out << "Owoc" << std::endl;
+	}
+	return out;
+}
+//std::ostream& operator<<(std::ostream& out, const Basket& basket)
+//{
+//	for (auto& full_basket : basket)
+//	{
+//		out << full_basket.nazwa<<
+//	}
+//}
+//

@@ -5,6 +5,7 @@
 #include <ctime>
 #include <list>
 #include<algorithm>
+#include <ostream>
 
 int randomInt(int min, int max);
 void exercise1(const int& range,   int erase_value);
@@ -22,3 +23,5 @@ struct Plant {
 };
 using Basket = std::vector<Plant>;
 void put_vegetables_and_fruits(int number);
+std::ostream& operator<<(std::ostream& out, const Plant &plant);
+std::ostream& operator<<(std::ostream& out, const Basket& basket);
