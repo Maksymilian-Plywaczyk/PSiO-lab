@@ -10,5 +10,6 @@ int main()
    //exercise3(10,5);
     //exercise4(10);
     //exercise5(10);
-    exercise6(10);
+    //exercise6(10);
+    put_vegetables_and_fruits(3);
 }

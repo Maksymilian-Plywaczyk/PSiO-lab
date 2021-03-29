@@ -14,3 +14,11 @@ void exercise4(const int& range3);
 void exercise5(const int& range4);
 void exercise6(const int& range5);
 
+enum class TypePlant { Fruit, Vegetable };
+
+struct Plant {
+    TypePlant typ;
+    std::string nazwa;
+};
+using Basket = std::vector<Plant>;
+void put_vegetables_and_fruits(int number);

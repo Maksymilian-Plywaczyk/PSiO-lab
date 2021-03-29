@@ -121,3 +121,36 @@ void exercise6(const int& range5)
 	}
 
 }
+
+void put_vegetables_and_fruits(int number)
+{
+	Basket basket;
+	Plant plant;
+	int rodzaj;
+	for (int i = 0; i < number; i++)
+	{
+		std::cout << "What do you want to add: Vegetable press '1', Fruit press '2': ";
+		std::cin >> rodzaj;
+		switch (rodzaj)
+		{
+		case 1:
+		{
+			plant.typ = TypePlant::Vegetable;
+			std::cout << "Enter the name of Vegetable: " << std::endl;
+			std::cin >> plant.nazwa;
+			basket.push_back(plant);
+			break;
+		}
+		case 2:
+		{
+			plant.typ = TypePlant::Fruit;
+			std::cout << "Enter the name of Fruit: " << std::endl;
+			std::cin >> plant.nazwa;
+			basket.push_back(plant);
+			break;
+		}
+
+		}
+
+	}
+}
