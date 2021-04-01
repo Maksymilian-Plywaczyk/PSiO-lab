@@ -122,7 +122,7 @@ void exercise6(const int& range5)
 
 }
 
-void put_vegetables_and_fruits(int number, Basket basket)
+void put_vegetables_and_fruits(int number, Basket& basket)
 {
 	Plant plant;
 	int rodzaj;
@@ -151,7 +151,7 @@ void put_vegetables_and_fruits(int number, Basket basket)
 	}
 
 	}
-	basket.push_back(plant);
+
 }
 
 std::ostream& operator<<(std::ostream& out, const Plant& plant)
@@ -261,12 +261,12 @@ int zlicz_owoce(const Basket& koszyk)
 
 int zlicz_warzywa(const Basket& koszyk)
 {
-	auto couting = std::count_if(koszyk.begin(), koszyk.end(),
+	return std::count_if(koszyk.begin(), koszyk.end(),
 		[](const Plant& roslina) { return roslina.typ == TypePlant::Vegetable; }
 	);
-	std::cout << couting;
-	return couting;
+
 }
+
 
 
 

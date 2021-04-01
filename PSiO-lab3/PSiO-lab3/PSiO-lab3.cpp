@@ -11,7 +11,7 @@ int main()
     //exercise4(10);
   /*  exercise5(10);*/
 
-    const Basket koszyk;
+    Basket koszyk;
     put_vegetables_and_fruits(3,koszyk);
     sprawdzanie_gruszki(koszyk);
     zlicz_warzywa(koszyk);

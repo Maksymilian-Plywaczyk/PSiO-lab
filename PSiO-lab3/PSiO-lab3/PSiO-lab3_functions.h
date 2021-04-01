@@ -23,7 +23,7 @@ struct Plant {
     std::string nazwa;
 };
 using Basket = std::vector<Plant>;
-void put_vegetables_and_fruits(int number,Basket basket);
+void put_vegetables_and_fruits(int number,Basket& basket);
 std::ostream& operator<<(std::ostream& out, const Plant &plant);
 std::ostream& operator<<(std::ostream& out, const Basket& basket);
 bool czy_jest_gruszka(const Basket& basket);
