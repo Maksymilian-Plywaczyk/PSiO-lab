@@ -12,8 +12,7 @@ int main()
     //exercise5(10);
     //exercise6(10);
     Basket koszyk;
-    put_vegetables_and_fruits(3,koszyk);
+    put_vegetables_and_fruits(2, koszyk);
     sprawdzanie_gruszki(koszyk);
-   
-    
+  
 }

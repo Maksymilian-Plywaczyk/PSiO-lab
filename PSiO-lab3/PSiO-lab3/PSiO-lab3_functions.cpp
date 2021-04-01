@@ -180,11 +180,8 @@ bool czy_jest_gruszka(const Basket& basket)
 	if (finding != std::end(basket))
 	{
 		return true;
-	}else{ return false; }
-		
-
-
-
+	}else
+	{ return false; }
 }
 void sprawdzanie_gruszki( Basket basket)
 {
@@ -195,4 +192,55 @@ void sprawdzanie_gruszki( Basket basket)
 	else
 		std::cout << "Nie ma gruszki";
 }
+
+bool czy_same_owoce(const Basket& basket)
+{
+	return std::all_of(basket.begin(), basket.end(),
+		[](const Plant& plant) 
+		{ return plant.typ == TypePlant::Fruit; }
+	);
+}
+bool czy_same_warzywa(const Basket& basket)
+{
+	return std::all_of(basket.begin(), basket.end(), [](const Plant& plant) 
+		{return plant.typ == TypePlant::Vegetable; }
+	);
+}
+bool co_najmniej__jeden_owoc(const Basket& basket)
+{
+	return std::any_of(basket.begin(), basket.end(), [](const Plant& plant)
+		{return plant.typ == TypePlant::Fruit; }
+	);
+}
+bool co_najmniej__jedno_warzywo(const Basket& basket)
+{
+	return std::any_of(basket.begin(), basket.end(), [](const Plant& plant)
+		{return plant.typ == TypePlant::Vegetable; }
+	);
+}
+bool zadnego_owocu(const Basket& basket)
+{
+	return std::none_of(basket.begin(), basket.end(), [](const Plant& plant)
+		{return plant.typ == TypePlant::Fruit; }
+	);
+}
+bool zadnego_warzywa(const Basket& basket)
+{
+	return std::none_of(basket.begin(), basket.end(), [](const Plant& plant)
+		{return plant.typ == TypePlant::Vegetable; }
+	);
+}
+
+void exercise10(Basket basket)
+{
+	if (czy_same_owoce(basket))
+	{
+		std::cout << "\nW koszyku same owoce" << std::endl;
+	}
+	if (czy_same_warzywa(basket))
+	{
+		std::cout << "\nW koszyku same warzywa" << std::endl;
+	}
+}
+
 

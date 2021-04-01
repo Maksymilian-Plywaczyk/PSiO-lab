@@ -6,6 +6,7 @@
 #include <list>
 #include<algorithm>
 #include <ostream>
+#include <list>
 
 int randomInt(int min, int max);
 void exercise1(const int& range,   int erase_value);
@@ -27,3 +28,12 @@ std::ostream& operator<<(std::ostream& out, const Plant &plant);
 std::ostream& operator<<(std::ostream& out, const Basket& basket);
 bool czy_jest_gruszka(const Basket& basket);
 void sprawdzanie_gruszki(Basket basket);
+bool czy_same_owoce(const Basket& basket);
+bool czy_same_warzywa(const Basket& basket);
+bool co_najmniej__jeden_owoc(const Basket& basket);
+bool co_najmniej__jedno_warzywo(const Basket& basket);
+bool zadnego_owocu(const Basket& basket);
+bool zadnego_warzywa(const Basket& basket);
+void exercise10(Basket basket);
+
+
