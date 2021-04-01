@@ -241,15 +241,23 @@ bool zadnego_warzywa(const Basket& basket)
 	);
 }
 
-void exercise10(Basket basket)
+void exercise10(Basket& basket)
 {
 	if (czy_same_owoce(basket))
 	{
 		std::cout << "\nW koszyku same owoce" << std::endl;
 	}
+	else
+	{
+		std::cout << "\nW koszyku nie ma samych owocow" << std::endl;
+	}
 	if (czy_same_warzywa(basket))
 	{
 		std::cout << "\nW koszyku same warzywa" << std::endl;
+	}
+	else
+	{
+		std::cout << "\nW koszyku nie ma samych warzyw" << std::endl;
 	}
 }
 int zlicz_owoce(const Basket& koszyk)
@@ -266,6 +274,18 @@ int zlicz_warzywa(const Basket& koszyk)
 	);
 
 }
+bool usun_zaczynajace_sie_od(Basket& basket, char letter)
+{
+	auto removing= basket.erase(std::remove_if(basket.begin(), basket.end(), [letter](Plant plant)
+		{return plant.nazwa[0] == letter; }), basket.end());
+	if (removing != std::end(basket))
+	{
+		return true;
+
+	 }else
+		return false;
+
+
 
 
 

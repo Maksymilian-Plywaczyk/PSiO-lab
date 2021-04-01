@@ -13,6 +13,7 @@ int main()
 
     Basket koszyk;
     put_vegetables_and_fruits(3,koszyk);
-    sprawdzanie_gruszki(koszyk);
-    zlicz_warzywa(koszyk);
+    //sprawdzanie_gruszki(koszyk);
+    //zlicz_warzywa(koszyk);
+    //exercise10(koszyk);
 }

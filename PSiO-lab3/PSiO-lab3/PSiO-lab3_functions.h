@@ -37,5 +37,7 @@ bool zadnego_warzywa(const Basket& basket);
 int zlicz_owoce(const Basket& koszyk);
 int zlicz_warzywa(const Basket& koszyk);
 void exercise10(Basket& basket);
+bool usun_zaczynajace_sie_od(Basket& basket, char letter);
+
 
 
