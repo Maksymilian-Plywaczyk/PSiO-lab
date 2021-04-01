@@ -9,10 +9,10 @@ int main()
    //exercise2(10,5);
    //exercise3(10,5);
     //exercise4(10);
-    //exercise5(10);
-    //exercise6(10);
-    Basket koszyk;
-    put_vegetables_and_fruits(2, koszyk);
+  /*  exercise5(10);*/
+
+    const Basket koszyk;
+    put_vegetables_and_fruits(3,koszyk);
     sprawdzanie_gruszki(koszyk);
-  
+    zlicz_warzywa(koszyk);
 }

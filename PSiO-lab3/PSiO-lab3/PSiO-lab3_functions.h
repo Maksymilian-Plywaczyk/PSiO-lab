@@ -34,6 +34,8 @@ bool co_najmniej__jeden_owoc(const Basket& basket);
 bool co_najmniej__jedno_warzywo(const Basket& basket);
 bool zadnego_owocu(const Basket& basket);
 bool zadnego_warzywa(const Basket& basket);
-void exercise10(Basket basket);
+int zlicz_owoce(const Basket& koszyk);
+int zlicz_warzywa(const Basket& koszyk);
+void exercise10(Basket& basket);
 
 

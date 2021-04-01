@@ -122,7 +122,7 @@ void exercise6(const int& range5)
 
 }
 
-void put_vegetables_and_fruits(int number,Basket basket)
+void put_vegetables_and_fruits(int number, Basket basket)
 {
 	Plant plant;
 	int rodzaj;
@@ -148,19 +148,24 @@ void put_vegetables_and_fruits(int number,Basket basket)
 			basket.push_back(plant);
 			break;
 		}
-
-		}
+	}
 
 	}
+	basket.push_back(plant);
 }
 
-//std::ostream& operator<<(std::ostream& out, const Plant &plant)
-//{
-//	int typ,typ2;
-//	 typ=static_cast<int>(plant.typ == TypePlant::Vegetable);
-//	 typ2= static_cast<int>(plant.typ == TypePlant::Fruit);
-//	 return out << typ << typ2;
-//}
+std::ostream& operator<<(std::ostream& out, const Plant& plant)
+{
+	if (plant.typ == TypePlant::Vegetable)
+	{
+		out << "Warzywo" << std::endl;
+	}
+	else(plant.typ == TypePlant::Fruit);
+	{
+		out << "Owoc" << std::endl;
+	}
+	return out;
+}
 //std::ostream& operator<<(std::ostream& out, const Basket& basket)
 //{
 //	for (auto& full_basket : basket)
@@ -170,27 +175,32 @@ void put_vegetables_and_fruits(int number,Basket basket)
 //}
 //
 
-bool czy_jest_gruszka(const Basket& basket)
+bool czy_jest_gruszka(const Basket& basket1)
 {
-	auto finding = std::find_if(basket.begin(), basket.end(), [](const Plant plant)
-		{
-			 plant.nazwa == "Gruszka";
-			return true;
-		});
-	if (finding != std::end(basket))
+
+	auto finding = std::find_if(basket1.begin(), basket1.end(), [](Plant plant) { return plant.nazwa =="Gruszka";
+		 });
+	if (finding != basket1.end())
 	{
 		return true;
+		
 	}else
-	{ return false; }
+	{ 
+		return false;
+	}
 }
-void sprawdzanie_gruszki( Basket basket)
+void sprawdzanie_gruszki(Basket basket)
 {
+	
 	if (czy_jest_gruszka(basket))
 	{
 		std::cout << "Jest gruszka w koszyku!";
 	}
 	else
+	{
 		std::cout << "Nie ma gruszki";
+	}
+	
 }
 
 bool czy_same_owoce(const Basket& basket)
@@ -242,5 +252,21 @@ void exercise10(Basket basket)
 		std::cout << "\nW koszyku same warzywa" << std::endl;
 	}
 }
+int zlicz_owoce(const Basket& koszyk)
+{
+	return std::count_if(koszyk.begin(), koszyk.end(),
+		[](const Plant& roslina) { return roslina.typ ==TypePlant::Fruit; }
+	);
+}
+
+int zlicz_warzywa(const Basket& koszyk)
+{
+	auto couting = std::count_if(koszyk.begin(), koszyk.end(),
+		[](const Plant& roslina) { return roslina.typ == TypePlant::Vegetable; }
+	);
+	std::cout << couting;
+	return couting;
+}
+
 
 
