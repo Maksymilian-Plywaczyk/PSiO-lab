@@ -156,24 +156,18 @@ void put_vegetables_and_fruits(int number, Basket& basket)
 
 std::ostream& operator<<(std::ostream& out, const Plant& plant)
 {
-	if (plant.typ == TypePlant::Vegetable)
-	{
-		out << "Warzywo" << std::endl;
-	}
-	else(plant.typ == TypePlant::Fruit);
-	{
-		out << "Owoc" << std::endl;
-	}
-	return out;
+	std::string type= plant.typ == TypePlant::Fruit ? "Owoc" : "Warzywo";
+	out << "Typ: " << type << "Nazwa: " << plant.nazwa;
+
 }
-//std::ostream& operator<<(std::ostream& out, const Basket& basket)
-//{
-//	for (auto& full_basket : basket)
-//	{
-//		out << full_basket.nazwa<<
-//	}
-//}
-//
+std::ostream& operator<<(std::ostream& out, const Basket& basket)
+{
+	for (auto& full_basket : basket)
+	{
+		out << full_basket;
+	}
+}
+
 
 bool czy_jest_gruszka(const Basket& basket1)
 {
@@ -276,16 +270,17 @@ int zlicz_warzywa(const Basket& koszyk)
 }
 bool usun_zaczynajace_sie_od(Basket& basket, char letter)
 {
-	auto removing= basket.erase(std::remove_if(basket.begin(), basket.end(), [letter](Plant plant)
+	auto removing = basket.erase(std::remove_if(basket.begin(), basket.end(), [letter](Plant plant)
 		{return plant.nazwa[0] == letter; }), basket.end());
 	if (removing != std::end(basket))
 	{
 		return true;
 
-	 }else
+	}
+	else
 		return false;
-
-
+	
+}
 
 
 
