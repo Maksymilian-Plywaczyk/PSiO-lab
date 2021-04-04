@@ -40,5 +40,5 @@ void exercise10(Basket& basket);
 bool usun_zaczynajace_sie_od(Basket& basket, char letter);
 bool operator<(const Plant& r1, const Plant& r2);
 void wspolne_rosliny(Basket& basket, Basket& basket2);
-
+void wszystko_razem(Basket& basket, Basket& basket2);
 

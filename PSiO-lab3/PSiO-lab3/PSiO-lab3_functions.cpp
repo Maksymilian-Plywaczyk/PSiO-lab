@@ -158,6 +158,7 @@ std::ostream& operator<<(std::ostream& out, const Plant& plant)
 {
 	std::string type= plant.typ == TypePlant::Fruit ? "Owoc" : "Warzywo";
 	out << "Typ: " << type << "Nazwa: " << plant.nazwa;
+	return out;
 
 }
 std::ostream& operator<<(std::ostream& out, const Basket& basket)
@@ -166,6 +167,7 @@ std::ostream& operator<<(std::ostream& out, const Basket& basket)
 	{
 		out << full_basket;
 	}
+	return  out;
 }
 
 
@@ -302,4 +304,9 @@ void wspolne_rosliny(Basket& basket, Basket& basket2)
 	std::cout << koszyk_wspolne << std::endl;
 
 }
-
+void wszystko_razem(Basket& basket, Basket& basket2)
+{
+	Basket wszystko_razem;
+	std::set_union(basket.begin(), basket.end(), basket2.begin(), basket2.end(), std::back_inserter(wszystko_razem));
+	std::cout << wszystko_razem << std::endl;
+}
