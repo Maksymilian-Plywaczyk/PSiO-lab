@@ -12,8 +12,11 @@ int main()
   /*  exercise5(10);*/
 
     Basket koszyk;
+    Basket koszyk2;
     put_vegetables_and_fruits(3,koszyk);
+    put_vegetables_and_fruits(3, koszyk2);
     //sprawdzanie_gruszki(koszyk);
     //zlicz_warzywa(koszyk);
     //exercise10(koszyk);
+    wspolne_rosliny(koszyk, koszyk2);
 }

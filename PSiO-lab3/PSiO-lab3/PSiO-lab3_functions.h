@@ -38,6 +38,7 @@ int zlicz_owoce(const Basket& koszyk);
 int zlicz_warzywa(const Basket& koszyk);
 void exercise10(Basket& basket);
 bool usun_zaczynajace_sie_od(Basket& basket, char letter);
-
+bool operator<(const Plant& r1, const Plant& r2);
+void wspolne_rosliny(Basket& basket, Basket& basket2);
 
 

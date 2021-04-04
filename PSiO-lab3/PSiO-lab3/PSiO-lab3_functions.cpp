@@ -281,7 +281,25 @@ bool usun_zaczynajace_sie_od(Basket& basket, char letter)
 		return false;
 	
 }
+bool operator<(const Plant& r1, const Plant& r2)
+{
+	if (r1 < r2)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 
+	}
+}
+void wspolne_rosliny(Basket& basket, Basket& basket2)
+{
+	Basket koszyk_wspolne;
+	std::sort(basket.begin(), basket.end());
+	std::sort(basket2.begin(), basket2.end());
+	std::set_intersection(basket.begin(), basket.end(), basket2.begin(), basket2.end(),std::back_inserter(koszyk_wspolne));
+	std::cout << koszyk_wspolne << std::endl;
 
-
+}
 
