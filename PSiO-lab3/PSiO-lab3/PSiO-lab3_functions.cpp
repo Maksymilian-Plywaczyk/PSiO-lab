@@ -301,12 +301,17 @@ void wspolne_rosliny(Basket& basket, Basket& basket2)
 	std::sort(basket.begin(), basket.end());
 	std::sort(basket2.begin(), basket2.end());
 	std::set_intersection(basket.begin(), basket.end(), basket2.begin(), basket2.end(),std::back_inserter(koszyk_wspolne));
-	std::cout << koszyk_wspolne << std::endl;
-
+	for (auto& wsp:koszyk_wspolne)
+	{
+		std::cout << wsp << std::endl;
+	}
 }
 void wszystko_razem(Basket& basket, Basket& basket2)
 {
 	Basket wszystko_razem;
 	std::set_union(basket.begin(), basket.end(), basket2.begin(), basket2.end(), std::back_inserter(wszystko_razem));
-	std::cout << wszystko_razem << std::endl;
+	for (auto& ev : wszystko_razem)
+	{
+		std::cout << ev << std::endl;
+	}
 }
