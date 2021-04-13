@@ -1,13 +1,13 @@
 ﻿#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cstdlib>
 
 
 int main() {
     // create the window
-     float WindowWidth = 800;
-     float WindowHeight = 600;
-    sf::RenderWindow window(sf::VideoMode(WindowWidth, WindowHeight), "My window");
+     
+    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
     
     // create some shapes
     sf::CircleShape circle(100.0f);
@@ -19,7 +19,7 @@ int main() {
     rectangle.setPosition(200.0, 400.0);
     rectangle.setFillColor(sf::Color(100, 50, 250));
     //rectangle.move(rectangle_velocity_x,rectangle_velocity_y);
-
+   
     float rectangle_velocity_x = 50;
     float rectangle_velocity_y = 150;
     float rectangle_angular_velocity = 10;
@@ -63,20 +63,25 @@ int main() {
         if (rectangle_bounds.top <= 0)
         {
             rectangle_velocity_y = -rectangle_velocity_y;
+
+            rectangle.setFillColor(sf::Color(rand() % 256));
         }
+
         if (rectangle_bounds.top + rectangle_bounds.height >= window.getSize().y)
         {
             
             rectangle_velocity_y -= rectangle_velocity_y;
+            rectangle.setFillColor(sf::Color(rand() %256 ));
         }
         if (rectangle_bounds.left <= 0)
         {
             rectangle_velocity_x = -rectangle_velocity_x;
-
+            rectangle.setFillColor(sf::Color(rand() % 256));
         }
        if (rectangle_bounds.left + rectangle_bounds.width >= window.getSize().x)
         {
            rectangle_velocity_x =  -rectangle_velocity_x;
+           rectangle.setFillColor(sf::Color(rand() % 256));
           
         }
     
