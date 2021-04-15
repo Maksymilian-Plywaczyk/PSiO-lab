@@ -50,19 +50,49 @@ private:
 class CustomRectangleShape:public sf::RectangleShape
 {
 public:
+  
+    CustomRectangleShape(const sf::Vector2f& size_, const sf::Vector2f& position_) :size(size_), position(position_) {}
+    sf::Vector2f size_of_rectangle() { return size; }
+  void setSpeed(int speed_of_direction_x_, int speed_of_direction_y_,int speed_of_rotate_) {
+         this->speed_of_direction_x = speed_of_direction_x_;
+         this->speed_of_direction_y = speed_of_direction_y_;
+         this->speed_of_rotate = speed_of_rotate_;
+       
+    }
+  void animate(sf::Time& elapsed)
+  {
+      move(speed_of_direction_x * elapsed.asSeconds(), speed_of_direction_y * elapsed.asSeconds());
+      rotate(speed_of_rotate * elapsed.asSeconds());
+  }
+private:
     sf::Vector2f size;
     sf::Vector2f position;
-    CustomRectangleShape(const sf::Vector2f& size_, const sf::Vector2f& position_) :size(size_), position(position_) {}
-    sf::Vector2f sizeS() { return size; }
+    int speed_of_direction_x = 0;
+    int speed_of_direction_y = 0;
+    int speed_of_rotate = 0;
+    
 };
 
 int main()
 {
+    sf::Clock clock;
+    //inheritance in sfml
     sf::Vector2f size(120.0, 60.0);
     sf::Vector2f position(120.0, 60.0);
     CustomRectangleShape my_rectangle(size, position);
     my_rectangle.setFillColor(sf::Color(100, 50, 100));
-    std::cout << my_rectangle.sizeS().x << std::endl;
+    my_rectangle.setSpeed(100, 100, 50);
+    sf::Time elapsed = clock.restart();
+    my_rectangle.animate(elapsed);
+
+
+  
+    std::cout <<"Direction x:"<< my_rectangle.size_of_rectangle().x <<" direction y:" <<my_rectangle.size_of_rectangle().y<<std::endl;
+    
+    
+    
+    
+    //Learing about inheritance in cpp, code some examples
     Traktor traktor("Wielki ciagnik",false);
     Car car("Toyota","Gasoline",200.0,false);
     std::cout << car.name()<<" "<<car.propulsion_type() << std::endl;
