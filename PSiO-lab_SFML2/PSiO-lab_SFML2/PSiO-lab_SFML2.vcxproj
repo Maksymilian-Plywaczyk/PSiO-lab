@@ -145,7 +145,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CustomRectangle.cpp" />
     <ClCompile Include="PSiO-lab_SFML2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CustomRectangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
