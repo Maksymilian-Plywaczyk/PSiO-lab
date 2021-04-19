@@ -35,7 +35,7 @@ int main() {
 
     sf::Clock clock;
 
-    //window.setFramerateLimit(60);
+    window.setFramerateLimit(60);
 
     // run the program as long as the window is open
     while (window.isOpen()) {
@@ -49,10 +49,7 @@ int main() {
                 window.close();
         }
         //LOGIKA
-
-        sf::Time currentTime = clock.restart();
-  
-       
+        sf::Time currentTime = clock.restart(); 
         rectangle.move(rectangle_velocity_x * currentTime.asSeconds(), rectangle_velocity_y * currentTime.asSeconds());
         rectangle.rotate(rectangle_angular_velocity*currentTime.asSeconds());
         
@@ -62,26 +59,29 @@ int main() {
         std::cout << rectangle_bounds.width << " " << rectangle_bounds.height << std::endl;
         if (rectangle_bounds.top <= 0)
         {
-            rectangle_velocity_y = -rectangle_velocity_y;
+            rectangle_velocity_y = std::abs(rectangle_velocity_y);
 
-            rectangle.setFillColor(sf::Color(rand() % 256));
+            rectangle.setFillColor(sf::Color(255,255,0));
         }
 
         if (rectangle_bounds.top + rectangle_bounds.height >= window.getSize().y)
         {
             
-            rectangle_velocity_y -= rectangle_velocity_y;
-            rectangle.setFillColor(sf::Color(rand() %256 ));
+            rectangle_velocity_y = -std::abs(rectangle_velocity_y);
+
+            rectangle.setFillColor(sf::Color(255, 255, 0));
         }
         if (rectangle_bounds.left <= 0)
         {
-            rectangle_velocity_x = -rectangle_velocity_x;
-            rectangle.setFillColor(sf::Color(rand() % 256));
+            rectangle_velocity_x = std::abs(rectangle_velocity_x);
+
+            rectangle.setFillColor(sf::Color(255, 255, 0));
         }
        if (rectangle_bounds.left + rectangle_bounds.width >= window.getSize().x)
         {
-           rectangle_velocity_x =  -rectangle_velocity_x;
-           rectangle.setFillColor(sf::Color(rand() % 256));
+           rectangle_velocity_x =  -std::abs(rectangle_velocity_x);
+
+           rectangle.setFillColor(sf::Color(255, 255, 0));
           
         }
     
