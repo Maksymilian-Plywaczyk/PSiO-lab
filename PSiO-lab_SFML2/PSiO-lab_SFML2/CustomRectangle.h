@@ -18,6 +18,8 @@ public:
 	void setBounds(int left, int width, int top, int height);
 	void setBounds(sf::IntRect& rectangle);
 	void bounce();
+	void select();
+	void unselect();
 private:
 	sf::Vector2f size;
 	sf::Vector2f position;
@@ -28,7 +30,7 @@ private:
 	int width_bounds = 0;
 	int top_bounds = 0;
 	int height_bounds = 0;
-
+	bool is_selected = false;
 
 };
 

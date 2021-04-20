@@ -69,19 +69,18 @@ int main() {
             
             rectangle_velocity_y = -std::abs(rectangle_velocity_y);
 
-            rectangle.setFillColor(sf::Color(255, 255, 0));
+            rectangle.setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255));
         }
         if (rectangle_bounds.left <= 0)
         {
             rectangle_velocity_x = std::abs(rectangle_velocity_x);
 
-            rectangle.setFillColor(sf::Color(255, 255, 0));
+            rectangle.setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255));
         }
        if (rectangle_bounds.left + rectangle_bounds.width >= window.getSize().x)
         {
            rectangle_velocity_x =  -std::abs(rectangle_velocity_x);
-
-           rectangle.setFillColor(sf::Color(255, 255, 0));
+           rectangle.setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255));
           
         }
     
