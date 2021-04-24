@@ -23,7 +23,7 @@ void CustomRectangle::rectangle_animate(sf::Time& elapsed)
 		//rotating of rectanglqe
 		rotate(speed_of_rotate * elapsed.asSeconds());
 		bounce();
-		std::cout << "Sterowanie bez uzytykownika" << std::endl;
+		//std::cout << "Sterowanie bez uzytykownika" << std::endl;
 	}
 	else
 	{
@@ -52,7 +52,7 @@ void CustomRectangle::rectangle_animate(sf::Time& elapsed)
 				move(speed_of_direction_x * elapsed.asSeconds(), 0);
 					
 		}
-		std::cout << "Sterowanie za pomoca uzytkownika" << std::endl;
+		//std::cout << "Sterowanie za pomoca uzytkownika" << std::endl;
 	}
 }
 
@@ -108,6 +108,16 @@ void CustomRectangle::unselect() {
 
 		is_selected = false;
 
+}
+bool CustomRectangle::isClicked(sf::Vector2i& mouse_pos)
+{
+	sf::FloatRect rectangle_bounds = getGlobalBounds();
+	if (mouse_pos.x<rectangle_bounds.left + rectangle_bounds.width && mouse_pos.x>rectangle_bounds.left &&
+		mouse_pos.y<rectangle_bounds.top + rectangle_bounds.height && mouse_pos.y>rectangle_bounds.top) {
+		return true;
+	}
+	else
+		return false;
 }
 
 

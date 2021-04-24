@@ -29,7 +29,7 @@ int main()
     }
 
     for (auto& rec : rectangles) {
-        rec.setFillColor(sf::Color(rand() % 255, rand() % 255, rand()%255));
+        rec.setFillColor(sf::Color(128,128,128));
         rec.setBounds(0, window.getSize().x, 0, window.getSize().y);
         rec.setSpeed(100, 200, 10);
     }
@@ -43,40 +43,53 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            if (event.type == sf::Event::KeyPressed) 
-                {
-                    my_rectangle.select();
-                }
-                if (event.type == sf::Event::KeyPressed) {
-                    if (event.key.code == sf::Keyboard::B)
-                {
-                        my_rectangle.unselect();
-                }
-             }
 
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
                     std::cout << "Mouse clicked: " << mouse_pos.x << ", " << mouse_pos.y << std::endl;
-                    
+                    for (auto& r : rectangles)
+                    {
+                        if (r.isClicked(mouse_pos))
+                        {
+                            r.select();
+                            r.setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255));
+                        }
+                    }
+
                 }
             }
-        }
+                if (event.mouseButton.button == sf::Mouse::Right)
+                {
+                    sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
+                    for (auto& r : rectangles)
+                    {
+                        if (r.isClicked(mouse_pos))
+                        {
+                            r.unselect();
+                            r.setFillColor(sf::Color(128,128, 128));
+                        }
+                    }
+                }
+           
+       }
         
         // logic of game 
         sf::Time elapsed = clock.restart();
-        my_rectangle.rectangle_animate(elapsed);
         
+        for ( auto& r : rectangles)
+        {
+            r.rectangle_animate(elapsed);
+        }
         
         
         //clear the window with black screen
         window.clear(sf::Color::Black);
-        window.draw(my_rectangle);
-     /*   for (auto& r : rectangles)
+       
+        for (auto& r : rectangles)
         {
-            r.rectangle_animate(elapsed);
             window.draw(r);
-        }*/
+        }
         
        
         //end of current frame

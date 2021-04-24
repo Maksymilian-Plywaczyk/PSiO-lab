@@ -20,6 +20,7 @@ public:
 	void bounce();
 	void select();
 	void unselect();
+	bool isClicked(sf::Vector2i& mouse_pos);
 private:
 	sf::Vector2f size;
 	sf::Vector2f position;
