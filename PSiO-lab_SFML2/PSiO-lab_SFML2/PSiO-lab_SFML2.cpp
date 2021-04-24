@@ -29,7 +29,7 @@ int main()
     }
 
     for (auto& rec : rectangles) {
-        rec.setFillColor(sf::Color(rand() % 255, rand() % 255, rand());
+        rec.setFillColor(sf::Color(rand() % 255, rand() % 255, rand()%255));
         rec.setBounds(0, window.getSize().x, 0, window.getSize().y);
         rec.setSpeed(100, 200, 10);
     }
@@ -43,11 +43,16 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            if (event.type == sf::Event::KeyReleased) {
-                if (event.key.code == sf::Keyboard::Space) {
-                    std::cout << "Space released" << std::endl;
+            if (event.type == sf::Event::KeyPressed) 
+                {
+                    my_rectangle.select();
                 }
-            }
+                if (event.type == sf::Event::KeyPressed) {
+                    if (event.key.code == sf::Keyboard::B)
+                {
+                        my_rectangle.unselect();
+                }
+             }
 
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
@@ -67,11 +72,11 @@ int main()
         //clear the window with black screen
         window.clear(sf::Color::Black);
         window.draw(my_rectangle);
-        for (auto& r : rectangles)
+     /*   for (auto& r : rectangles)
         {
             r.rectangle_animate(elapsed);
             window.draw(r);
-        }
+        }*/
         
        
         //end of current frame
