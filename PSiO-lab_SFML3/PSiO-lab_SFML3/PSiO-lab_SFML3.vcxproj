@@ -146,13 +146,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Grass.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PSiO-lab_SFML3.cpp" />
-    <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Grass.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Textures.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

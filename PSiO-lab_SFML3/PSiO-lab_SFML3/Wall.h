@@ -7,7 +7,7 @@
 #include	<memory>
 
 
-class Textures
+class Wall
 {
 
 

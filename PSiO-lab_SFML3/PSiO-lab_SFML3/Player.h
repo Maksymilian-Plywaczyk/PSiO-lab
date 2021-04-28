@@ -24,7 +24,7 @@ class Player:public sf::Sprite
 		Player( sf::Vector2f & position_);
 		void player_animate(sf::Time&elapsed);
 		void collision_detected();
-		void set_bounds(int width, int height);
+		void set_bounds(int left,int width,int top, int height);
 
 		
 
