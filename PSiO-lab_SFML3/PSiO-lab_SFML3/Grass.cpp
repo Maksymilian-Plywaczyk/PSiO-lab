@@ -3,10 +3,9 @@
 Grass::Grass(sf::Vector2f& position_, float scale_x_, float scale_y_) :position(position_),scale_x(scale_x_),scale_y(scale_y_){
 
 	this->setPosition(position);
-	//this->setScale(100, 100);
+	this->setScale(3,3.5);
 	this->grass_texture.loadFromFile("rse/grass.png");
 	auto textureSize = this->grass_texture.getSize();
-
 	this->setTexture(grass_texture);
 	
 }
