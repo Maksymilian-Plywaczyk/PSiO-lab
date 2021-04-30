@@ -29,9 +29,9 @@ int main()
                 window.close();
         }
         sf::Time elapsed = clock.restart();
-        player.player_animate(elapsed);
+        player.player_animate(elapsed,wall);
+     
         window.clear();
-        player.collision_detected(wall);
         window.draw(grass);
         wall.wall_drawing(window);// to set background simply draw grass before player
         window.draw(player);

@@ -16,12 +16,17 @@ wall_size(wall_size_)
 
 	std::cout << wall_texture.getSize().x << wall_texture.getSize().y << std::endl;
 	//wall.setTextureRect(wall_size);
-
+	
 }
 
 void Wall::wall_drawing(sf::RenderWindow& window)
 {
 	window.draw(wall);
+}
+
+sf::FloatRect Wall::wall_bounds()
+{
+	return wall.getGlobalBounds();
 }
 
 

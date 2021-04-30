@@ -23,9 +23,9 @@ class Player:public sf::Sprite
 		int height_bounds = 0;
 	public:
 		Player( sf::Vector2f & position_);
-		void player_animate(sf::Time&elapsed);
+		void player_animate(sf::Time&elapsed,Wall wall);
 		void set_bounds(int left,int width,int top, int height);
-		void collision_detected(Wall wall);
+		bool collision_detected(Wall wall);
 		
 
 };

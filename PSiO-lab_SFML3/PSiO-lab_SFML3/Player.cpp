@@ -22,41 +22,67 @@ void Player::set_bounds(int left,int width,int top,int height)
 	this->top_bounds = top;
 }
 
-void Player::player_animate(sf::Time& elapsed)
+void Player::player_animate(sf::Time& elapsed,Wall wall)
 {
 	sf::FloatRect player_bounds =getGlobalBounds();
+	sf::FloatRect wall_bounds = wall.wall_bounds();
 	//std::cout << getGlobalBounds().left << std::endl;
 	//std::cout << getGlobalBounds().top << std::endl;
 	std::cout << getGlobalBounds().width + getGlobalBounds().left << " " << player_bounds.top + player_bounds.height << std::endl;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		if (player_bounds.left > left_bounds)
 			this->move(-speed_direction_x * elapsed.asSeconds(), 0);
-		
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-		if (player_bounds.top > top_bounds)
-			this->move(0, -speed_direction_y * elapsed.asSeconds());
-		
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-	 if (player_bounds.left + player_bounds.width < width_bounds)
+		if (player_bounds.intersects(wall_bounds))
+		{
 			this->move(speed_direction_x * elapsed.asSeconds(), 0);
-	
+		}
+
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		if (player_bounds.top+player_bounds.height <height_bounds)
-			this->move(0, speed_direction_y * elapsed.asSeconds());
-		
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			if (player_bounds.top > top_bounds)
+				this->move(0, -speed_direction_y * elapsed.asSeconds());
+			if (player_bounds.intersects(wall_bounds))
+			{
+				//this->move(0,speed_direction_y*elapsed.asSeconds());
+			}
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			if (player_bounds.left + player_bounds.width < width_bounds)
+				this->move(speed_direction_x * elapsed.asSeconds(), 0);
+			if (player_bounds.intersects(wall_bounds))
+			{
+				//this->move(-speed_direction_x * elapsed.asSeconds(), 0);
+			}
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			if (player_bounds.top + player_bounds.height < height_bounds)
+				this->move(0, speed_direction_y * elapsed.asSeconds());
+			if (player_bounds.intersects(wall_bounds))
+			{
+				//this->move(0, -speed_direction_y * elapsed.asSeconds());
+			}
+
+		}
 }
 	
 
-void Player::collision_detected(Wall wall)
+bool Player::collision_detected(Wall wall)
 {
-
+	sf::FloatRect player_bounds =this->getGlobalBounds();
+	sf::FloatRect wall_bounds = wall.wall_bounds();
+	if (wall_bounds.intersects(player_bounds))
+	{
+		std::cout << "collision";
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
