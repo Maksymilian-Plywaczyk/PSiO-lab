@@ -5,6 +5,7 @@
 #include	<SFML/Graphics.hpp>
 #include	<vector>
 #include	<memory>
+#include	"Wall.h"
 
 
 class Player:public sf::Sprite
@@ -24,7 +25,7 @@ class Player:public sf::Sprite
 		Player( sf::Vector2f & position_);
 		void player_animate(sf::Time&elapsed);
 		void set_bounds(int left,int width,int top, int height);
-
+		void collision_detected(Wall wall);
 		
 
 };

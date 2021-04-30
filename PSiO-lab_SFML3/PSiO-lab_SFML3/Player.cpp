@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Wall.h"
 
 Player::Player (sf::Vector2f& position_):position(position_) {
 	
@@ -31,6 +32,7 @@ void Player::player_animate(sf::Time& elapsed)
 	{
 		if (player_bounds.left > left_bounds)
 			this->move(-speed_direction_x * elapsed.asSeconds(), 0);
+		
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -53,23 +55,8 @@ void Player::player_animate(sf::Time& elapsed)
 }
 	
 
-//void Player::collision_detected()
-//{
-//	sf::FloatRect player_bounds = sf::Sprite::getGlobalBounds();
-//	if (player_bounds.left <= left_bounds) {
-//		this->move(0, 0);
-//	}
-//	if (player_bounds.left + player_bounds.width >= width_bounds)
-//	{
-//		this->move(0, 0);
-//	}
-//	if (player_bounds.top <= top_bounds)
-//	{
-//		this->move(0, 0);
-//	}
-//	if (player_bounds.top + player_bounds.height >= height_bounds)
-//	{
-//		this->move(0, 0);
-//	}
-//}
+void Player::collision_detected(Wall wall)
+{
+
+}
 
