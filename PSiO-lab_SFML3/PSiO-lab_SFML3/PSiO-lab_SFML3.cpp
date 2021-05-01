@@ -1,8 +1,10 @@
 ﻿#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 #include "Player.h"
 #include "Grass.h"
 #include "Wall.h"
+#include <memory>
 
 
 int main()
@@ -14,12 +16,27 @@ int main()
     sf::Vector2f player_position(300.0, 400.0);
     sf::Vector2f grass_position(0,0);
     Player player(player_position);
+    player.set_bounds(0, window.getSize().x, 0, window.getSize().y);
+
     sf::IntRect wall_size(20, 20, rand() % 200, rand() % 200);
     sf::Vector2f wall_position(200.0, 200.0);
     Wall wall(wall_position, wall_size);
+    
     Grass grass(grass_position, window.getSize().x, window.getSize().y);
-    player.set_bounds(0,window.getSize().x,0 ,window.getSize().y);
+    
     window.setFramerateLimit(60);
+    
+    
+    sf::IntRect wall_size_(40, 40, 100, 100);
+    sf::Vector2f wall_position1(rand() % 700, rand() % 800);
+
+
+    auto wall_ = std::make_unique<Wall*>(wall_position1, wall_size);
+    std::vector<std::unique_ptr<Wall*>>walls;
+    for (int i = 0; i < 10; ++i)
+    {
+        walls.push_back(std::move(wall_));
+    }
     while (window.isOpen())
     {
         sf::Event event;
@@ -33,7 +50,11 @@ int main()
      
         window.clear();
         window.draw(grass);
-        wall.wall_drawing(window);// to set background simply draw grass before player
+        for (auto& w : walls)
+        {
+            w->wall_drawing(window);
+        }
+        wall.wall_drawing(window);
         window.draw(player);
         window.display();
     }
