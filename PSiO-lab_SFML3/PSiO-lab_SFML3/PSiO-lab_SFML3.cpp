@@ -30,12 +30,13 @@ int main()
     sf::IntRect wall_size_(40, 40, 100, 100);
     sf::Vector2f wall_position1(rand() % 700, rand() % 800);
 
-
-    auto wall_ = std::make_unique<Wall*>(wall_position1, wall_size);
-    std::vector<std::unique_ptr<Wall*>>walls;
+    //TO DO sprawdz czy vector<Wall*> zadziała bez smart pointersów.
+    std::vector<Wall*>walls;
     for (int i = 0; i < 10; ++i)
     {
-        walls.push_back(std::move(wall_));
+        sf::IntRect wall_size_(40, 40, 100, 100);
+        sf::Vector2f wall_position1(rand() % 500, rand() % 500);
+        walls.emplace_back(new Wall(wall_position1, wall_size_));
     }
     while (window.isOpen())
     {
@@ -54,7 +55,7 @@ int main()
         {
             w->wall_drawing(window);
         }
-        wall.wall_drawing(window);
+        //wall.wall_drawing(window);
         window.draw(player);
         window.display();
     }
