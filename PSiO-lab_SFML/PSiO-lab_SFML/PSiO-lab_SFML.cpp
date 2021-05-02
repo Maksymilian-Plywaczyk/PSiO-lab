@@ -26,7 +26,7 @@ void create_shapes(sf::Time& elapsed,sf::RenderWindow& window,std::vector<std::u
     triangle->setOutlineColor(sf::Color::Red);
     triangle->setOutlineThickness(5);
     triangle->setPosition(600.0, 100.0);
-    
+
 
 
     float rectangle_velocity_x = 50;
