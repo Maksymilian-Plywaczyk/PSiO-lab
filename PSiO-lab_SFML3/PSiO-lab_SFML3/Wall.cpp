@@ -1,6 +1,6 @@
 #include "Wall.h"
 
-Wall::Wall(sf::Vector2f& position_wall_, sf::IntRect& wall_size_) : position_wall(position_wall_), 
+Wall::Wall(sf::Vector2f&position_wall_, sf::IntRect& wall_size_) : position_wall(position_wall_), 
 wall_size(wall_size_)
 
 {

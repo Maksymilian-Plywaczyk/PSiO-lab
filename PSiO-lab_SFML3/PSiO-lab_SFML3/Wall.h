@@ -15,6 +15,7 @@ class Wall
 		//sf::Texture wall_texture;
 		sf::IntRect wall_size;
 		sf::Vector2f position_wall;
+		
 	public:
 		Wall(sf::Vector2f& position_wall_,sf::IntRect& wall_size_);
 		void wall_drawing(sf::RenderWindow& window);

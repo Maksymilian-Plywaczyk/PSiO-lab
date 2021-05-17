@@ -32,11 +32,18 @@ int main()
 
     //TO DO sprawdz czy vector<Wall*> zadziała bez smart pointersów.
     std::vector<Wall*>walls;
-    for (int i = 0; i < 10; ++i)
+    std::vector<Wall*>walls2;
+    for (int i = 0; i < 5; ++i)
     {
-        sf::IntRect wall_size_(40, 40, 100, 100);
+        sf::IntRect wall_size_(40, 40, 150, 40);
         sf::Vector2f wall_position1(rand() % 500, rand() % 500);
         walls.emplace_back(new Wall(wall_position1, wall_size_));
+    }
+    for (int i = 0; i < 5; ++i)
+    {
+        sf::IntRect wall_size_(0, 0, 40, 150);
+        sf::Vector2f wall_position1(rand() % 500, rand() % 500);
+        walls2.emplace_back(new Wall(wall_position1, wall_size_));
     }
     while (window.isOpen())
     {
@@ -52,6 +59,10 @@ int main()
         window.clear();
         window.draw(grass);
         for (auto& w : walls)
+        {
+            w->wall_drawing(window);
+        }
+        for (auto& w : walls2)
         {
             w->wall_drawing(window);
         }

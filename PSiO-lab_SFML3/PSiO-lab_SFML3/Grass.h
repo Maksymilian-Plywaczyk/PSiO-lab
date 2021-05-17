@@ -15,6 +15,7 @@ class Grass:public sf::Sprite
 	float scale_x;
 	float scale_y;
 	
+	
 
 	public:
 		Grass(sf::Vector2f& position_,float scale_x_,float scale_y_);
