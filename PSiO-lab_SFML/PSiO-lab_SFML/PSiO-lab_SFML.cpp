@@ -5,8 +5,12 @@
 #include <memory>
 
 
-void create_shapes(sf::Time& elapsed,sf::RenderWindow& window,std::vector<std::unique_ptr<sf::Drawable>>&shapes)
+std::vector<std::unique_ptr<sf::Drawable>> create_shapes(sf::Time& elapsed,sf::RenderWindow& window)
 {
+    std::vector<std::unique_ptr<sf::Drawable>>shapes;
+    float rectangle_velocity_x = 50;
+    float rectangle_velocity_y = 150;
+    float rectangle_angular_velocity = 10;
    //circle
     auto circle = std::make_unique<sf::CircleShape>(100.0f);
     circle->setPosition(100.0f, 300.0f);
@@ -27,17 +31,9 @@ void create_shapes(sf::Time& elapsed,sf::RenderWindow& window,std::vector<std::u
     triangle->setOutlineThickness(5);
     triangle->setPosition(600.0, 100.0);
 
-
-
-    float rectangle_velocity_x = 50;
-    float rectangle_velocity_y = 150;
-    float rectangle_angular_velocity = 10;
-
-
     //rectangle->move(rectangle_velocity_x * elapsed.asSeconds(), rectangle_velocity_y * elapsed.asSeconds());
-    //rectangle->rotate(rectangle_angular_velocity * elapsed.asSeconds());
-
-
+    rectangle->rotate(rectangle_angular_velocity * elapsed.asSeconds());
+   
     sf::FloatRect rectangle_bounds = rectangle->getGlobalBounds();
     std::cout << rectangle_bounds.top << " " << rectangle_bounds.left << " ";
     std::cout << rectangle_bounds.width << " " << rectangle_bounds.height << std::endl;
@@ -67,22 +63,28 @@ void create_shapes(sf::Time& elapsed,sf::RenderWindow& window,std::vector<std::u
         rectangle->setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255));
 
     }
+    rectangle->move(rectangle_velocity_x * elapsed.asSeconds(), rectangle_velocity_y * elapsed.asSeconds());
     shapes.push_back(std::move(circle));
-    shapes.push_back(std::move(rectangle));
+  
     shapes.push_back(std::move(triangle));
-
+    shapes.push_back(std::move(rectangle));
+    return shapes;
 }
 
 
 int main() {
     // create the window
-     
+    int rectangle_velocity_x = 100;
+    int rectangle_velocity_y = 100;
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
   
     sf::Clock clock;
+   
+    sf::RectangleShape rectanglos;
+    rectanglos.setSize(sf::Vector2f(120,60));
+    rectanglos.setPosition(sf::Vector2f(120, 60));
 
     window.setFramerateLimit(60);
-
     // run the program as long as the window is open
     while (window.isOpen()) {
   
@@ -97,16 +99,16 @@ int main() {
         //LOGIKA
        
         sf::Time currentTime = clock.restart(); 
-        std::vector<std::unique_ptr<sf::Drawable>> shapes;
-        create_shapes(currentTime, window,shapes);
-       
-        // clear the window with black color
+        std::vector<std::unique_ptr<sf::Drawable>>shapes = create_shapes(currentTime,window);
+      
+        
         window.clear(sf::Color::Black);
 
         // draw everything here...
         for (const auto& s : shapes) {
             window.draw(*s);
         }
+        window.draw(rectanglos);
       //std::cout << " " << distance_x << " " << distance_y << std::endl;
        //std::cout << fps << std::endl;
         // end the current frame
